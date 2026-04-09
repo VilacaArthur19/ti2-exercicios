@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Estoque</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        h1 { border-bottom: 2px solid black; padding-bottom: 10px; }
+        .secao-titulo { text-align: center; font-weight: bold; margin: 20px 0; }
+        .form-inserir { display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .input-box { display: flex; align-items: center; gap: 5px; }
+        input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        
+        /* Estilo dos Botões */
+        .btn { border: none; border-radius: 4px; color: white; padding: 10px 20px; cursor: pointer; font-weight: bold; }
+        .btn-cadastrar { background-color: #00FF00; color: black; display: block; margin: 20px auto; }
+        .btn-consultar { background-color: #000080; }
+        .btn-remover { background-color: #FF0000; }
+        .btn-todos { background-color: #000080; }
+
+        .divisor { border-top: 2px dashed #888; margin: 30px 0; }
+        .acoes-container { display: flex; justify-content: space-around; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <h1>Controle de Estoque</h1>
+
+    <div class="secao-titulo">Inserir Produto</div>
+
+    <form action="/produto" method="post">
+        <div class="form-inserir">
+            <div class="input-box">
+                Descrição: <input type="text" name="descricao" placeholder="leite, pão...">
+            </div>
+            <div class="input-box">
+                Preço: <input type="text" name="preco">
+            </div>
+            <div class="input-box">
+                Quantidade: <input type="text" name="quantidade">
+            </div>
+            <div class="input-box">
+                Data de fabricação: <input type="text" name="dataFabricacao" placeholder="2020-04-16T12:00:00...">
+            </div>
+            <div class="input-box">
+                Data de validade: <input type="text" name="dataValidade" placeholder="2020-04-16">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-cadastrar">cadastrar</button>
+    </form>
+
+    <div class="divisor"></div>
+
+    <div class="acoes-container">
+        <div>
+            <p><strong>Detalhar produto</strong></p>
+            <input type="text" id="idConsultar" placeholder="id do produto..."><br><br>
+            <button onclick="window.location.href='/produto/' + document.getElementById('idConsultar').value" class="btn btn-consultar">consultar</button>
+        </div>
+
+        <div>
+            <p><strong>Remover produto</strong></p>
+            <input type="text" id="idRemover" placeholder="id do produto..."><br><br>
+            <button onclick="window.location.href='/produto/delete/' + document.getElementById('idRemover').value" class="btn btn-remover">remover</button>
+        </div>
+
+        <div>
+            <p><strong>Listar produtos</strong></p>
+            <br><br>
+            <button onclick="window.location.href='/produto'" class="btn btn-todos">todos</button>
+        </div>
+    </div>
+
+</body>
+</html>
